@@ -1,0 +1,186 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 80%;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        to bottom,
+        #55c9f2 0%,
+        #8dddf7 65%,
+        #c9f0fa 100%
+    );
+
+    border: 6px solid #222;
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.game-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+}
+
+
+/* Score */
+
+.score {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 10;
+
+    padding: 10px 20px;
+
+    background-color: rgba(255, 255, 255, 0.9);
+
+    border: 3px solid #222;
+    border-radius: 8px;
+
+    box-shadow: 4px 4px 0 #222;
+}
+
+.score h1 {
+    font-size: 22px;
+    color: #222;
+    letter-spacing: 1px;
+}
+
+.score.game-over {
+    background-color: #ffdfdf;
+    border-color: #9d2020;
+    box-shadow: 4px 4px 0 #9d2020;
+}
+
+.score.game-over h1 {
+    color: #9d2020;
+}
+
+
+/* Obstacle */
+
+.obstacle {
+    width: 100px;
+    overflow: hidden;
+
+    display: none;
+    position: absolute;
+
+    bottom: 58px;
+    left: 200px;
+
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.3));
+}
+
+.obstacle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Mario */
+
+.mario {
+    width: 100px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 58px;
+    left: 20px;
+    z-index: 5;
+}
+
+.mario img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mario.flipped img {
+    transform: scaleX(-1);
+}
+
+
+/* Platform */
+
+.platform {
+    width: 100%;
+    height: 60px;
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    overflow: hidden;
+
+    background-color: #8b451f;
+    border-top: 5px solid #4d2817;
+
+    z-index: 4;
+}
+
+.platform img {
+    width: 110px;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    .game-container {
+        width: 95%;
+        height: 85vh;
+    }
+
+    .score {
+        top: 15px;
+        left: 15px;
+        padding: 8px 14px;
+    }
+
+    .score h1 {
+        font-size: 17px;
+    }
+
+    .mario {
+        width: 80px;
+    }
+
+    .obstacle {
+        width: 80px;
+    }
+}
